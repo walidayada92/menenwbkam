@@ -1,56 +1,36 @@
 "use client";
 
-import { useState } from "react";
-
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    setEmail("");
-  };
-
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white px-6">
-      <div className="text-center max-w-xl w-full">
-        <h1 className="text-5xl font-bold mb-6">Menenwbkam</h1>
+    <main className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
+      
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-purple-600 opacity-20 blur-[150px] rounded-full"></div>
+        <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-blue-600 opacity-20 blur-[150px] rounded-full"></div>
+      </div>
 
-        <p className="text-gray-300 mb-8 text-lg">
-          We're working hard to launch our new website.
-          Stay tuned — something amazing is coming soon.
+      <div className="text-center px-6">
+        <h1 className="text-6xl sm:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">
+          Menenwbkam
+        </h1>
+
+        <p className="mt-6 text-gray-400 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed">
+          A new digital experience is in the making.
+          <br />
+          We’re crafting something exceptional.
         </p>
 
-        {!submitted ? (
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-3 justify-center"
-          >
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="px-4 py-3 rounded-md text-black w-full sm:w-auto flex-1 outline-none"
-              required
-            />
-            <button
-              type="submit"
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-md font-semibold"
-            >
-              Notify Me
-            </button>
-          </form>
-        ) : (
-          <p className="text-green-400 font-medium mt-4">
-            ✅ Thanks! We’ll notify you soon.
-          </p>
-        )}
+        <div className="mt-10">
+          <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+        </div>
 
-        <footer className="mt-12 text-gray-500 text-sm">
-          © {new Date().getFullYear()} Menenwbkam. All rights reserved.
+        <p className="mt-8 text-sm text-gray-600 tracking-widest uppercase">
+          Coming Soon
+        </p>
+
+        <footer className="mt-16 text-gray-700 text-sm">
+          © {new Date().getFullYear()} Menenwbkam
         </footer>
       </div>
     </main>
