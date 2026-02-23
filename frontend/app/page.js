@@ -1,64 +1,58 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubmitted(true);
+    setEmail("");
+  };
+
   return (
-    <main>
-      <header className="hero">
-        <h1>Menenwbkam</h1>
-        <p>
-          Know <strong>where</strong> to buy and <strong>for how much</strong>.
-          <br />
-          Menenwbkam (منين وبكام) helps you compare prices and find the best deals.
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white px-6">
+      <div className="text-center max-w-xl w-full">
+        <h1 className="text-5xl font-bold mb-6">Menenwbkam</h1>
+
+        <p className="text-gray-300 mb-8 text-lg">
+          We're working hard to launch our new website.
+          Stay tuned — something amazing is coming soon.
         </p>
-        <a className="cta" href="#">Get Early Access</a>
-      </header>
 
-      <section>
-        <h2>Why Menenwbkam?</h2>
-        <div className="features">
-          <div className="card">📍 Find Nearby Stores</div>
-          <div className="card">💰 Compare Prices</div>
-          <div className="card">🛒 Smart Shopping</div>
-        </div>
-      </section>
+        {!submitted ? (
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-3 justify-center"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="px-4 py-3 rounded-md text-black w-full sm:w-auto flex-1 outline-none"
+              required
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-md font-semibold"
+            >
+              Notify Me
+            </button>
+          </form>
+        ) : (
+          <p className="text-green-400 font-medium mt-4">
+            ✅ Thanks! We’ll notify you soon.
+          </p>
+        )}
 
-      <footer>© 2026 Menenwbkam.com</footer>
-
-      <style jsx>{`
-        .hero {
-          background: linear-gradient(135deg, #0ea5e9, #2563eb);
-          color: white;
-          padding: 64px 20px;
-          text-align: center;
-        }
-        .cta {
-          background: white;
-          color: #2563eb;
-          padding: 12px 24px;
-          border-radius: 999px;
-          font-weight: 600;
-          text-decoration: none;
-        }
-        section {
-          padding: 60px 20px;
-          text-align: center;
-        }
-        .features {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 20px;
-        }
-        .card {
-          background: #f8fafc;
-          padding: 24px;
-          border-radius: 12px;
-        }
-        footer {
-          padding: 30px;
-          text-align: center;
-          background: #020617;
-          color: #cbd5f5;
-        }
-      `}</style>
+        <footer className="mt-12 text-gray-500 text-sm">
+          © {new Date().getFullYear()} Menenwbkam. All rights reserved.
+        </footer>
+      </div>
     </main>
   );
 }
-
