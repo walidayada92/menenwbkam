@@ -5,6 +5,9 @@ export const prisma = new PrismaClient({
   adapter: new PrismaPg({
     connectionString: process.env.DATABASE_URL,
     options: "-c timezone=UTC",
+    max: 5,
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 30000,
   }),
 });
 export * from "@prisma/client";

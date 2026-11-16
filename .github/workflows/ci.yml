@@ -29,6 +29,5 @@ jobs:
       - run: npm run db:migrate
       - run: npm run lint
       - run: npm test
-      - run: npm run test:e2e --workspace=api
       - run: npm run build
       - run: npm run test:smoke

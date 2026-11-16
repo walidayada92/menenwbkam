@@ -41,7 +41,13 @@ export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
 export async function catalog<T>(path: string): Promise<T> {
   const response = await fetch(
     (process.env.API_URL || "http://127.0.0.1:3000") + "/catalog/" + path,
-    { cache: "no-store", signal: AbortSignal.timeout(8000) },
+    {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+      headers: process.env.API_PROXY_SECRET
+        ? { "x-api-key": process.env.API_PROXY_SECRET }
+        : {},
+    },
   );
   if (!response.ok) throw new Error("Catalog unavailable");
   return response.json();

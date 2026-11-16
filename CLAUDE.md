@@ -1,5 +1,21 @@
 # Project: Menenwbkam (menenwbkam.com)
 
+## Active launch scope — 2026-11-16
+
+The user authorized a comparison-only public launch, with no signup, marketplace,
+checkout, billing or seller dashboards. `launch/price-comparison` is the release
+branch. The complete earlier marketplace is preserved at `cabab80` on
+`marketplace/future-phase`; merge it only when the user authorizes that next phase.
+This section supersedes the historical implementation/phase guidance below.
+Keep the existing schema and data; do not drop/reset marketplace records. Public
+API controllers are registered only by ComparisonModule. New features must not
+reintroduce marketplace routes. Production requires a server-only API_PROXY_SECRET.
+Read docs/production-launch.md before deployment. The exact domain is awaiting
+confirmation (the user mentioned menewbkam.com; the earlier project uses menenwbkam.com).
+No DNS or hosting changes have been authorized for a particular account yet.
+Signup is deferred: consider Google login when alerts/account sync are introduced.
+Never claim all-store coverage or real review scores without source data.
+
 ## Vision
 
 Build the best price-comparison marketplace and SaaS platform. Shoppers search

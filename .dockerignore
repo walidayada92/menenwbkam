@@ -1,0 +1,14 @@
+.git
+.env
+.env.*
+node_modules
+**/node_modules
+.local
+.turbo
+**/dist
+**/.next
+**/.next-dev
+**/*.log
+**/*.tsbuildinfo
+**/server_log.txt
+**/test-products.xlsx

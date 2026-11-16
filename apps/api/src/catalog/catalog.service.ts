@@ -22,11 +22,10 @@ export class CatalogService {
     const intent = searchIntent(query.q || '');
     if (intent.interpreted && !intent.query)
       return { items: [], total: 0, page: 1, pageSize: 24 };
-    query = {
-      ...query,
+    query = Object.assign(new SearchDto(), query, {
       q: intent.query,
       sort: query.sort || intent.sort || undefined,
-    };
+    });
     if (
       query.minPrice !== undefined &&
       query.maxPrice !== undefined &&

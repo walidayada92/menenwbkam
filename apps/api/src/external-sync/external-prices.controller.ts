@@ -74,6 +74,16 @@ export function titleConditions(query: string) {
 @Controller('catalog/external-prices')
 export class ExternalPricesController {
   @Post('discover') async discover(@Body() query: ExternalPricesQuery) {
+    if (
+      process.env.NODE_ENV === 'production' &&
+      process.env.PUBLIC_DISCOVERY_ENABLED !== 'true'
+    )
+      return {
+        status: 'unsupported',
+        stores: ['AMAZON', 'ALMANEA', 'NOON', 'EXTRA', 'TRENDYOL'].map(
+          (store) => ({ store, status: 'unsupported' }),
+        ),
+      };
     const stores = await Promise.all(
       (['AMAZON', 'ALMANEA', 'NOON', 'EXTRA', 'TRENDYOL'] as SearchStore[]).map(
         async (store) => {

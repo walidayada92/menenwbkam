@@ -1,4 +1,10 @@
 @import "tailwindcss";
+.skip-link { position:fixed; top:-100px; inset-inline-start:16px; z-index:100; background:white; padding:12px; color:var(--ink); }
+.skip-link:focus { top:12px; }
+.footer-links { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-top:14px; }
+.information-page { max-width:850px; }
+.information-page p { margin:24px 0; }
+.comparison-intro .category-chips { margin-bottom:40px; }
 .offer-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin:28px 0 18px; }
 .offer-heading h2 { font-size:clamp(24px,3vw,34px); margin:4px 0; letter-spacing:-.6px; }
 .offer-heading p { margin:0; color:var(--muted); }
@@ -2053,7 +2059,8 @@ body:has(.seller-shell) > .site-header {
 }
 .market-hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 2;
   background: #123e31;
   color: white;
   min-height: 500px;

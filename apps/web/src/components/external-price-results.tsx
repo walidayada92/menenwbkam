@@ -247,11 +247,11 @@ function PriceTable({
                 <strong>
                   {(
                     {
-                      AMAZON: ar ? "??????" : "Amazon",
-                      ALMANEA: ar ? "??????" : "Almanea",
-                      NOON: ar ? "???" : "Noon",
-                      EXTRA: ar ? "??????" : "eXtra",
-                      TRENDYOL: ar ? "????????" : "Trendyol",
+                      AMAZON: ar ? "أمازون" : "Amazon",
+                      ALMANEA: ar ? "المنيع" : "Almanea",
+                      NOON: ar ? "نون" : "Noon",
+                      EXTRA: ar ? "إكسترا" : "eXtra",
+                      TRENDYOL: ar ? "ترينديول" : "Trendyol",
                     } as Record<string, string>
                   )[store] || store}
                   :{" "}
@@ -274,7 +274,7 @@ function PriceTable({
                           : "Collection for this search is disabled by the administrator."
                         : status === "robots_disallowed"
                           ? ar
-                            ? "??? ?????? ?? ???? ???? ????? ????? ????????. ???? ?? ?????? ?????? ?????."
+                            ? "البحث التلقائي غير متاح لهذا المتجر. يمكنك البحث في المتجر مباشرة أدناه."
                             : "This store does not permit automatic search collection. Search the store directly below."
                           : status === "unsupported"
                             ? ar

@@ -86,7 +86,7 @@ export function renderedSearchProducts(
       if (matches) {
         if (store === 'TRENDYOL') {
           // Retain the seller selection; another seller may quote another price.
-          for (const key of [...url.searchParams.keys()])
+          for (const key of new Set(url.searchParams.keys()))
             if (key !== 'merchantId') url.searchParams.delete(key);
         } else url.search = '';
         url.hash = '';
