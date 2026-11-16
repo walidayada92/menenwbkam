@@ -1,12 +1,28 @@
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: nextjs-frontend
-    ports:
-      - "3000:3000"
+  postgres:
+    image: postgres:16-alpine
+    ports: ["127.0.0.1:5432:5432"]
     environment:
-      - NODE_ENV=production
-    restart: unless-stopped
-
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: menenwbkam
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d menenwbkam"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
+    profiles: [search]
+    ports: ["127.0.0.1:7700:7700"]
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:?Set MEILI_MASTER_KEY in .env}
+    volumes: [meili_data:/meili_data]
+  redis:
+    image: redis:7-alpine
+    profiles: [cache]
+    ports: ["127.0.0.1:6379:6379"]
+volumes:
+  postgres_data:
+  meili_data:
