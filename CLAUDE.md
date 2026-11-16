@@ -10,8 +10,8 @@ This section supersedes the historical implementation/phase guidance below.
 Keep the existing schema and data; do not drop/reset marketplace records. Public
 API controllers are registered only by ComparisonModule. New features must not
 reintroduce marketplace routes. Production requires a server-only API_PROXY_SECRET.
-Read docs/production-launch.md before deployment. The exact domain is awaiting
-confirmation (the user mentioned menewbkam.com; the earlier project uses menenwbkam.com).
+Read docs/production-launch.md before deployment. The user confirmed the public
+domain as menenwbkam.com. Use https://menenwbkam.com as the production site origin.
 No DNS or hosting changes have been authorized for a particular account yet.
 Signup is deferred: consider Google login when alerts/account sync are introduced.
 Never claim all-store coverage or real review scores without source data.

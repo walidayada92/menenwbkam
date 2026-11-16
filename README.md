@@ -64,5 +64,6 @@ production servers and verifies comparison pages/API and marketplace isolation.
 Vercel web project: Root Directory `apps/web`, Node 24. Optional Vercel NestJS API
 project: Root Directory `apps/api`. Configure workspace access and production
 environment values. Use managed PostgreSQL and a persistent worker runtime.
-Confirm whether the domain is `menenwbkam.com` or `menewbkam.com` before DNS changes.
+The confirmed public domain is `menenwbkam.com`. Set production
+`NEXT_PUBLIC_SITE_URL=https://menenwbkam.com`; follow the deployment guide for DNS.
 No deployment, remote push or DNS change is implied by preparing this source.

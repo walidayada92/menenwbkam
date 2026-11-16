@@ -44,7 +44,7 @@ Set server environment variables in both Preview and Production:
 | --- | --- |
 | `API_URL` | HTTPS origin of the API project; no trailing slash |
 | `API_PROXY_SECRET` | A random secret of at least 32 characters; identical on API |
-| `NEXT_PUBLIC_SITE_URL` | Exact confirmed public HTTPS origin, e.g. `https://your-domain.com` |
+| `NEXT_PUBLIC_SITE_URL` | `https://menenwbkam.com` |
 
 `API_PROXY_SECRET` must remain server-only. Do not add `NEXT_PUBLIC_` to it. Never
 configure a production API URL or database credentials in browser JavaScript.
@@ -123,9 +123,8 @@ queries starting long/expensive scraping jobs before monitoring and limits are r
 
 ## Domain
 
-Confirm the spelling first: the repository uses **menenwbkam.com**, while the user
-also mentioned **menewbkam.com**. Do not change DNS based on that ambiguity.
-In the web project's Domains settings, add the confirmed domain and follow the
+The user confirmed **menenwbkam.com** as the public domain.
+In the web project's Domains settings, add `menenwbkam.com` and follow the
 exact DNS records Vercel shows for that project. Configure one canonical hostname,
 redirect the other hostname, set NEXT_PUBLIC_SITE_URL, rebuild and verify HTTPS.
 Do not copy guessed IP addresses or DNS records from an old guide.
