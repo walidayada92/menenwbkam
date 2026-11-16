@@ -1,0 +1,10 @@
+node_modules
+.next
+dist
+.turbo
+.local
+package-lock.json
+uploads
+*.js.map
+apps/api/vitest.config*.js
+apps/api/vitest.config*.d.ts
