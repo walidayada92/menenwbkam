@@ -1,0 +1,37 @@
+{
+  "name": "menenwbkam",
+  "private": true,
+  "engines": { "node": "24.x", "npm": ">=10" },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "pipeline:worker": "npm run worker --workspace=api",
+    "pipeline:scheduler": "npm run scheduler --workspace=api",
+    "pipeline:bootstrap": "npm run pipeline:bootstrap --workspace=api",
+    "test:pipeline": "node scripts/test-comparison-pipeline.cjs",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo test",
+    "db:generate": "npm run generate --workspace=@menenwbkam/database",
+    "db:migrate": "npm run migrate:deploy --workspace=@menenwbkam/database",
+    "db:seed": "npm run seed --workspace=@menenwbkam/database",
+    "test:smoke": "node scripts/smoke-comparison.mjs",
+    "format:check": "prettier --check \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\" \"scripts/*.mjs\""
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "packageManager": "npm@10.8.2",
+  "dependencies": {
+    "@prisma/client": "^7.10.0",
+    "prisma": "^7.10.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.32"
+  }
+}
